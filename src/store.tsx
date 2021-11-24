@@ -1,6 +1,15 @@
 import { createStore, combineReducers } from 'redux';
+import {
+	breeds,
+	variants,
+	favoriteVariant
+} from './reducers';
 
-const reducers = {};
+const reducers = {
+	breeds,
+	variants,
+	favoriteVariant
+};
 
 const rootReducer = combineReducers( reducers );
 

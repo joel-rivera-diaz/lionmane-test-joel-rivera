@@ -1,5 +1,10 @@
+// interface Props {
+// 	name: string,
+// 	variants: Array<any>
+// }
+
 export const Home = () => {
 	return (
-		<h1>Home page</h1>
+		<h1>Dog Breed App - LionMane</h1>
 	);
 };
