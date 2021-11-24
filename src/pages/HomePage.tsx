@@ -1,3 +1,8 @@
+import { 
+	getAllBreeds
+} from '../actions';
+
+
 // interface Props {
 // 	name: string,
 // 	variants: Array<any>
