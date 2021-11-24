@@ -1,3 +1,3 @@
-export const displayAlert = () => (() => {
-	alert('hello thunk');
+export const displayAlert = text => (() => {
+	alert(`hello thunk: --> ${text}`);
 });

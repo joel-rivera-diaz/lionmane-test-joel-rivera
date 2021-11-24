@@ -16,8 +16,7 @@ const configureStore = () => createStore(
 	composeWithDevTools(applyMiddleware( thunk ))
 );
 
- export const store = configureStore();
-
+export const store = configureStore();
 
 // Types
 export type RootState = ReturnType<typeof store.getState>

@@ -15,7 +15,7 @@ interface Props {
 	variants: { name: string }[],
 	favoriteVariant: string,
 	onSelectFavoritePressed: (name: string) => AppDispatch,
-	onDisplayAlertPressed: () => AppDispatch
+	onDisplayAlertPressed: (text: string) => AppDispatch
 }
 
 const Breed: FC<Props> = ({ 
@@ -40,7 +40,7 @@ const Breed: FC<Props> = ({
 			<button onClick={()=> onSelectFavoritePressed('Viralata mi locooo') }>Viralata</button>
 			<button onClick={()=> onSelectFavoritePressed('Pug como Benito') }>Pug</button> */}
 
-			<button onClick={()=> onDisplayAlertPressed()}>display thunk alert</button>
+			<button onClick={()=> onDisplayAlertPressed('kzxkyxzkyxzkyzx')}>display thunk alert</button>
 
 		</>
 		
@@ -54,7 +54,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	onSelectFavoritePressed: name => dispatch(selectFavoriteVariant(name)),
-	onDisplayAlertPressed: () => dispatch(displayAlert())
+	onDisplayAlertPressed: text => dispatch(displayAlert(text)),
 });
 
 const ConnectedBreed = connect(mapStateToProps, mapDispatchToProps)(Breed) 
