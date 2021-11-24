@@ -1,17 +1,16 @@
-import { createStore, combineReducers, compose } from 'redux';
-import {
-	breeds,
-	variants,
-	favoriteVariant
-} from './reducers';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import { breeds, variants, favoriteVariant } from './reducers';
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// declare global {
+//   interface Window {
+//     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+//   }
+// }
+
+//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducers = {
 	breeds,
@@ -23,7 +22,7 @@ const rootReducer = combineReducers( reducers );
 
 const configureStore = () => createStore(
 	rootReducer, 
-	composeEnhancers()
+	composeWithDevTools(applyMiddleware( thunk ))
 );
 
  export const store = configureStore();

@@ -39,7 +39,7 @@ export const favoriteVariant = (state = null, action) => {
 
 	switch (type) {
 		case SELECT_FAVORITE_VARIANT: {
-			return state;
+			return payload.variant;
 		}
 		default: {
 			return state;
