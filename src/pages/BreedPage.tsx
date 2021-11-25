@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
-import { loadVariants } from '../thunks';
+import { loadVariants, VariantData } from '../thunks';
 import { Variant } from '../components/Variant';
 import { RootState, AppDispatch } from '../store';
 import {} from '../components/Variant';
@@ -12,7 +12,7 @@ import {
 } from '../actions';
 
 interface Props {
-	variants: string[],
+	variants: VariantData[],
 	favoriteVariant: string,
 	isLoading: boolean,
 	onSelectFavoritePressed: (name: string) => AppDispatch,
@@ -35,7 +35,7 @@ const Breed: FC<Props> = ({
 
 	return (
 		<>
-			{variants.map( vname => <Variant name={vname} imageURL={'https://pbs.twimg.com/profile_images/652078131034124288/Mb9ohLiV_400x400.jpg'} />)}
+			{variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />)}
 			<h1>Showing Variant from Breed: {breed}</h1>
 			<h3>is loading? : {isLoading}</h3>
 			<h3>Favorite Variant: {favoriteVariant}</h3>

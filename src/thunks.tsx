@@ -4,6 +4,11 @@ import {
 	loadVariantsFailure 
 } from './actions';
 
+export interface VariantData {
+	name: string,
+	imageURLs: string[]
+}
+
 export const loadVariants = (breed) => (async (dispatch, getState) => {
 	try {
 		dispatch(loadVariantsInProgress());
@@ -21,27 +26,14 @@ export const loadVariants = (breed) => (async (dispatch, getState) => {
 		);
 
 		// merge variants
-		const variantsWithImageURLs =
+		const variantsWithImageURLs: VariantData =
 			variants.map((v, i) => ({ 
 				name: v, 
 				imageURLs: variantImagesURLs[i].message
 			}));
 
+		dispatch(loadVariantsSuccess(variantsWithImageURLs));
 
-
-		
-		console.log({
-			response,
-			variants,
-			//variantsImagesPromises,
-			variantsImagesResponses,
-			//variantsImagesURLsPromises,
-			variantImagesURLs,
-			variantsWithImageURLs
-		});
-		
-		
-		dispatch(loadVariantsSuccess(variants));
 	} catch (e) {
 		dispatch(loadVariantsFailure());
 		dispatch(displayAlert(e))
