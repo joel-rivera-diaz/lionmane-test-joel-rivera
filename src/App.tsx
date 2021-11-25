@@ -4,14 +4,14 @@ import {
   Route
 } from "react-router-dom";
 import { Home } from './pages/HomePage';
-import { Breed } from './pages/BreedPage';
+import { BreedPage } from './pages/BreedPage';
 
 export const App = () => {
 	return (
 		<Router>
       <Routes>
         <Route path="/" element={<Home />} />
-				<Route path="/breed/:breed" element={<Breed  />} />
+				<Route path="/breed/:breed" element={<BreedPage  />} />
       </Routes>
     </Router>
 	)

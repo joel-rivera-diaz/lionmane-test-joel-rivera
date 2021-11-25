@@ -1,0 +1,83 @@
+// variables
+$light-gray: rgb(167, 167, 167);
+$dark-gray: rgb(119, 119, 119);
+
+// ---------------------
+//       General
+// ---------------------
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+// ---------------------
+//        Pages
+// ---------------------
+.BreedPage {
+	width: 800px;
+	margin: 0 auto;
+}
+
+// ---------------------
+//      Components
+// ---------------------
+.Header {
+	background-color: $light-gray;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	
+	div.logo {
+		width: 30%;
+		padding: 20px;
+		border-right: 1px solid white;
+	}
+	
+	div.app-name {
+		width: 70%;
+		padding-top: 64px;
+		padding-left: 96px;
+
+		h1 {
+			font-size: 45px;
+			color: white;
+		}
+	}
+	div.nav {
+		width: 100%;
+		padding: 30px;
+		
+		button {
+			font-size: 20px;
+			font-weight: bold;
+			color: white;
+			background-color: $dark-gray;
+			padding: 15px;
+			border: none;
+			border-radius: 4px;
+		}
+	}
+}
+
+.Variant {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid $light-gray;
+	height: 120px;
+	overflow: hidden;
+
+	div.thumb {
+		img {
+			width: 200px;
+		}
+	}
+	div.info {
+		h6{
+			font-size: 20px;
+		}
+		
+	}
+}
+

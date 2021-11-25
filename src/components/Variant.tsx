@@ -10,11 +10,14 @@ interface Props {
 
 export const Variant: FC<Props> = ({ name, imageURL, onSelectFavoritePressed }) => {
 	return (
-		<>
-			<img src={imageURL}></img>
-			<h6>Name: {name}</h6>
-			<button onClick={()=> onSelectFavoritePressed(name)}>Select as Favorite</button>
-		</>
+		<div className='Variant'>
+			<div className='thumb'>
+				<img src={imageURL}></img>
+			</div>
+			<div className='info'>
+				<h6>{name}</h6>
+			</div>
+		</div>
 		
 	);
 }

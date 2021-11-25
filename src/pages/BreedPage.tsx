@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 import { loadVariants, VariantData } from '../thunks';
 import { Variant } from '../components/Variant';
+import { Header } from '../components/Header';
 import { RootState, AppDispatch } from '../store';
 import {} from '../components/Variant';
 import { 
@@ -20,25 +21,31 @@ interface Props {
 	startLoadingVariants: (breed: string) => AppDispatch
 }
 
-const Breed: FC<Props> = ({
-	isLoading,
-	variants, 
-	onSelectFavoritePressed,
-	startLoadingVariants,
-	favoriteVariant
-}) => {
-	let { breed } = useParams();
+const BreedPage: FC<Props> = (props) => {
+	const { 
+		isLoading,
+		variants, 
+		onSelectFavoritePressed,
+		startLoadingVariants,
+		favoriteVariant
+	} = props;
+
+	const { breed } = useParams();
 
 	useEffect(() => {
 		startLoadingVariants(breed);
 	}, [breed]);
 
 	return (
-		<>
-			{variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />)}
-			<h1>Showing Variant from Breed: {breed}</h1>
+		<div className='BreedPage'>
+			<Header />
+			<div className='content'>
+				{variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />)}
+			</div>
+			
+			{/* <h1>Showing Variant from Breed: {breed}</h1>
 			<h3>is loading? : {isLoading}</h3>
-			<h3>Favorite Variant: {favoriteVariant}</h3>
+			<h3>Favorite Variant: {favoriteVariant}</h3> */}
 			{/* <p>Favorite: -- {favoriteVariant}</p> */}
 			{/* <p>am i receicing props? onSelectFavoritePressed: {onSelectFavoritePressed.toString()} </p> */}
 			{/* <button onClick={()=> onSelectFavoritePressed('Hymalaya como Piero') }>Hyma</button>
@@ -47,7 +54,7 @@ const Breed: FC<Props> = ({
 
 			
 
-		</>
+		</div>
 		
 	);
 };
@@ -63,7 +70,7 @@ const mapDispatchToProps = dispatch => ({
 	startLoadingVariants: breed => dispatch(loadVariants(breed))
 });
 
-const ConnectedBreed = connect(mapStateToProps, mapDispatchToProps)(Breed) 
+const ConnectedBreedPage = connect(mapStateToProps, mapDispatchToProps)(BreedPage) 
 
 
-export  { ConnectedBreed as Breed };
+export  { ConnectedBreedPage as BreedPage };
