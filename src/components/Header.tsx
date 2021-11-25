@@ -5,7 +5,7 @@ export const Header = () => {
 				<img src="https://lionmane.com/assets/svg/lionmane_logo_white_web.svg" id='logo' />
 			</div>
 			<div className='app-name'>
-				<h1>Dog Breed App</h1>
+				<h1>Dog App</h1>
 			</div>
 			<div className='nav'>
 				<nav><button>Home</button></nav>
