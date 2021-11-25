@@ -1,6 +1,7 @@
 // variables
 $light-gray: rgb(167, 167, 167);
 $lightest-gray: #ececec;
+$almost-white: rgb(245, 245, 245);
 $dark-gray: rgb(119, 119, 119);
 $darkest-gray: rgb(70, 70, 70);
 
@@ -79,6 +80,10 @@ $darkest-gray: rgb(70, 70, 70);
 	overflow: hidden;
 	padding: 11px;
 	padding-left: 0;
+
+	&:hover {
+		background-color: $almost-white;
+	}
 
 	div.thumb {
 		img {

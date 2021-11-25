@@ -5,7 +5,6 @@ import { loadVariants, VariantData } from '../thunks';
 import { Variant } from '../components/Variant';
 import { Header } from '../components/Header';
 import { RootState, AppDispatch } from '../store';
-import {} from '../components/Variant';
 import { 
 	getVariants,
 	getVariantImages,
@@ -16,16 +15,13 @@ interface Props {
 	variants: VariantData[],
 	favoriteVariant: string,
 	isLoading: boolean,
-	onSelectFavoritePressed: (name: string) => AppDispatch,
-	onDisplayAlertPressed: (text: string) => AppDispatch,
 	startLoadingVariants: (breed: string) => AppDispatch
 }
 
 const BreedPage: FC<Props> = (props) => {
 	const { 
 		isLoading,
-		variants, 
-		onSelectFavoritePressed,
+		variants,
 		startLoadingVariants,
 		favoriteVariant
 	} = props;
@@ -66,7 +62,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	onSelectFavoritePressed: name => dispatch(selectFavoriteVariant(name)),
 	startLoadingVariants: breed => dispatch(loadVariants(breed))
 });
 
