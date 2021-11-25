@@ -17,7 +17,9 @@ $darkest-gray: rgb(70, 70, 70);
 // ---------------------
 //        Pages
 // ---------------------
-.BreedPage {
+.BreedPage,
+.HomePage
+{
 	width: 800px;
 	margin: 0 auto;
 }
@@ -55,7 +57,8 @@ $darkest-gray: rgb(70, 70, 70);
 		padding: 5px;
 		background-color: $lightest-gray;
 		
-		button {
+		a {
+			display: inline-block;
 			font-size: 20px;
 			font-weight: bold;
 			color: $dark-gray;
@@ -63,6 +66,7 @@ $darkest-gray: rgb(70, 70, 70);
 			padding: 15px;
 			border: none;
 			border-radius: 4px;
+			text-decoration: none;
 		}
 	}
 }
@@ -70,9 +74,11 @@ $darkest-gray: rgb(70, 70, 70);
 .Variant {
 	display: flex;
 	flex-direction: row;
-	border: 1px solid $light-gray;
+	border-bottom: 1px solid $light-gray;
 	height: 120px;
 	overflow: hidden;
+	padding: 11px;
+	padding-left: 0;
 
 	div.thumb {
 		img {
@@ -80,6 +86,9 @@ $darkest-gray: rgb(70, 70, 70);
 		}
 	}
 	div.info {
+		padding-top: 42px;
+		padding-left: 50px;
+
 		h6{
 			font-size: 20px;
 		}

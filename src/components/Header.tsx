@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Header = () => {
 	return (
 		<div className='Header'>
@@ -8,7 +10,7 @@ export const Header = () => {
 				<h1>Dog App</h1>
 			</div>
 			<div className='nav'>
-				<nav><button>Home</button></nav>
+				<nav><Link to="/" className="btn btn-primary">Home</Link></nav>
 			</div>
 			
 			

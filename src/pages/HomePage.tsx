@@ -1,6 +1,6 @@
-import { 
-	getAllBreeds
-} from '../actions';
+import { Header } from '../components/Header';
+import { getAllBreeds } from '../actions';
+
 
 
 // interface Props {
@@ -10,6 +10,9 @@ import {
 
 export const Home = () => {
 	return (
-		<h1>Dog Breed App - LionMane</h1>
+		<div className='HomePage'>
+			<Header />
+		</div>
+		
 	);
 };
