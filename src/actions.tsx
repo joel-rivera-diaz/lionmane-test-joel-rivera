@@ -21,7 +21,27 @@ export const getVariantImages = (variant): Action => ({
 });
 
 export const SELECT_FAVORITE_VARIANT = 'SELECT_FAVORITE_VARIANT';
-export const selectFavoriteVariant = (variant): Action => ({
+export const selectFavoriteVariant = (name): Action => ({
 	type: SELECT_FAVORITE_VARIANT,
-	payload: { variant }
+	payload: { name }
 });
+
+// ---- S. W.
+
+export const LOAD_VARIANTS_IN_PROGRESS = 'LOAD_VARIANTS_IN_PROGRESS';
+export const loadVariantsInProgress = (): Action => ({
+	type: LOAD_VARIANTS_IN_PROGRESS
+});
+
+export const LOAD_VARIANTS_SUCCESS = 'LOAD_VARIANTS_SUCCESS';
+export const loadVariantsSuccess = (variants): Action => ({
+	type: LOAD_VARIANTS_SUCCESS,
+	payload: { variants }
+});
+
+export const LOAD_VARIANTS_FAILURE = 'LOAD_VARIANTS_FAILURE';
+export const loadVariantsFailure = (): Action => ({
+	type: LOAD_VARIANTS_FAILURE
+});
+
+

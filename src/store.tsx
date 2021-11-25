@@ -1,12 +1,13 @@
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
-import { breeds, variants, favoriteVariant } from './reducers';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { breeds, variants, favoriteVariant, isLoading } from './reducers';
 
 const reducers = {
 	breeds,
 	variants,
-	favoriteVariant
+	favoriteVariant,
+	isLoading
 };
 
 const rootReducer = combineReducers( reducers );
