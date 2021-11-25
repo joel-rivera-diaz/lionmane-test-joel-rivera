@@ -1,19 +1,14 @@
 import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
-import { loadVariants, VariantData } from '../thunks';
 import { Variant } from '../components/Variant';
 import { Header } from '../components/Header';
 import { RootState, AppDispatch } from '../store';
-import { 
-	getVariants,
-	getVariantImages,
-	selectFavoriteVariant
-} from '../actions';
+import { loadVariants, VariantData } from '../thunks';
+import { getVariants } from '../actions';
 
 interface Props {
 	variants: VariantData[],
-	favoriteVariant: string,
 	isLoading: boolean,
 	startLoadingVariants: (breed: string) => AppDispatch
 }
@@ -22,8 +17,7 @@ const BreedPage: FC<Props> = (props) => {
 	const { 
 		isLoading,
 		variants,
-		startLoadingVariants,
-		favoriteVariant
+		startLoadingVariants
 	} = props;
 
 	const { breed } = useParams();
@@ -32,24 +26,15 @@ const BreedPage: FC<Props> = (props) => {
 		startLoadingVariants(breed);
 	}, [breed]);
 
+	const variantsView = variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />);
+	const loadingView = <h1 className='alert'>LOADING VARIANTS...</h1>;
+
 	return (
 		<div className='BreedPage'>
 			<Header />
 			<div className='content'>
-				{variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />)}
+				{isLoading ? loadingView : variantsView}
 			</div>
-			
-			{/* <h1>Showing Variant from Breed: {breed}</h1>
-			<h3>is loading? : {isLoading}</h3>
-			<h3>Favorite Variant: {favoriteVariant}</h3> */}
-			{/* <p>Favorite: -- {favoriteVariant}</p> */}
-			{/* <p>am i receicing props? onSelectFavoritePressed: {onSelectFavoritePressed.toString()} </p> */}
-			{/* <button onClick={()=> onSelectFavoritePressed('Hymalaya como Piero') }>Hyma</button>
-			<button onClick={()=> onSelectFavoritePressed('Viralata mi locooo') }>Viralata</button>
-			<button onClick={()=> onSelectFavoritePressed('Pug como Benito') }>Pug</button> */}
-
-			
-
 		</div>
 		
 	);
@@ -57,7 +42,6 @@ const BreedPage: FC<Props> = (props) => {
 
 const mapStateToProps = state => ({
 	variants: state.variants,
-	favoriteVariant: state.favoriteVariant,
 	isLoading: state.isLoading
 });
 
