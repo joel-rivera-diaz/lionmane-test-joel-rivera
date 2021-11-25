@@ -12,19 +12,20 @@ export const loadVariants = (breed) => (async (dispatch, getState) => {
 		const variants = (await response.json()).message;
 		
 		// GET variants' image urls( in parallel )
-		const variantsImagesPromises =
-			variants.map( v => (fetch(`https://dog.ceo/api/breed/${breed}/${v}/images`)));
+		const variantsImagesResponses = await Promise.all(
+			variants.map( v => (fetch(`https://dog.ceo/api/breed/${breed}/${v}/images`)))
+		);
 		
-		const variantsImagesResponses = await Promise.all(variantsImagesPromises);
-		
-		const variantsImagesURLsPromises = 
-			variantsImagesResponses.map(response => (response as Response).json());
-
-		const variantImagesURLs = await Promise.all(variantsImagesURLsPromises);
+		const variantImagesURLs = await Promise.all(
+			variantsImagesResponses.map(response => (response as Response).json())
+		);
 
 		// merge variants
 		const variantsWithImageURLs =
-			variants.map((v, i) => ({ name: v, imageURLs: variantImagesURLs[i].message }));
+			variants.map((v, i) => ({ 
+				name: v, 
+				imageURLs: variantImagesURLs[i].message
+			}));
 
 
 
@@ -32,9 +33,9 @@ export const loadVariants = (breed) => (async (dispatch, getState) => {
 		console.log({
 			response,
 			variants,
-			variantsImagesPromises,
+			//variantsImagesPromises,
 			variantsImagesResponses,
-			variantsImagesURLsPromises,
+			//variantsImagesURLsPromises,
 			variantImagesURLs,
 			variantsWithImageURLs
 		});
