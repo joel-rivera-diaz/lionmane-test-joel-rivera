@@ -1,19 +1,32 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { AppDispatch } from "../store";
 import { connect } from "react-redux";
 import { selectFavoriteVariant, closePopup } from "../actions";
+import { VariantData } from '../thunks';
 
 
 interface Props {
+	variants: VariantData[],
 	popupVariant: string,
 	isVariantPopupOpen: boolean,
 	onClosePopup: () => AppDispatch,
 	onSelectFavoritePressed: (name:string) => AppDispatch 
 }
 
-const Popup: FC<Props> = ({ popupVariant, onClosePopup, isVariantPopupOpen, onSelectFavoritePressed }) => {
-	let display;
+const Popup: FC<Props> = ({ variants, popupVariant, onClosePopup, isVariantPopupOpen, onSelectFavoritePressed }) => {
+	const imgURLs = useMemo(() => { 
+		let urls: string[] = [];
+
+		for (const v of variants) {
+			if(v.name === popupVariant){
+				urls = v.imageURLs;
+			}
+		}
+		return urls;
+	}, [popupVariant]);
 	
+
+	let display;
 	if( isVariantPopupOpen ){
 		display = {display: 'block'}
 	} else {
@@ -28,7 +41,9 @@ const Popup: FC<Props> = ({ popupVariant, onClosePopup, isVariantPopupOpen, onSe
 					<button onClick={() => onClosePopup()}>X</button>
 				</div>
 				<div className='gallery'>
-
+					{imgURLs.map( url => (
+						<img src={url}  />
+					))}
 				</div>
 				<div className='button'>
 					<button onClick={() => onSelectFavoritePressed(popupVariant)}>
@@ -42,6 +57,7 @@ const Popup: FC<Props> = ({ popupVariant, onClosePopup, isVariantPopupOpen, onSe
 }
 
 const mapStateToProps = state => ({
+	variants: state.variants,
 	isVariantPopupOpen: state.isVariantPopupOpen,
 	popupVariant: state.popupVariantSelected
 });
