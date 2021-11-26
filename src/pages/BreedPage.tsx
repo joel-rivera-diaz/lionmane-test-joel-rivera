@@ -34,12 +34,7 @@ const BreedPage: FC<Props> = (props) => {
 				isLoading ? 
 					<h1 className='alert'>LOADING VARIANTS...</h1>
 				:
-					variants.map( (v) => 
-						<Variant 
-							name={v.name}
-							imageURL={v.imageURLs[0]}
-						/>
-					)
+					variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />)
 				}
 			</div>
 		</div>
