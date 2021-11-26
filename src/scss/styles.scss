@@ -25,6 +25,25 @@ $transparent: #000000a6;
 	width: 800px;
 	margin: 0 auto;
 }
+.HomePage {
+	.favorite{
+		padding: 20px;
+		img{
+			width: 200px;
+		}
+	}
+	.breed-list {
+
+		.breed {
+			&:hover {
+				background-color: $lightest-gray;
+				cursor: pointer;
+			}
+			padding: 20px;
+		}
+	}
+}
+
 .BreedPage {
 	h3.title {
 		font-size: 20px;
@@ -90,6 +109,7 @@ $transparent: #000000a6;
 	overflow: hidden;
 	padding: 11px;
 	padding-left: 0;
+	cursor: pointer;
 
 	&:hover {
 		background-color: $almost-white;

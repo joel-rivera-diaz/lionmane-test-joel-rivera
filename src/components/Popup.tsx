@@ -36,6 +36,7 @@ const Popup: FC<Props> = ({ variants, popupVariant, onClosePopup, isVariantPopup
 
 	const onSelectingFavoriteClick = () => {
 		onSelectFavoritePressed(popupVariant);
+		onClosePopup();
 		navigate(`/`);
 	};
 

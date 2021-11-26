@@ -21,7 +21,7 @@ export const loadBreeds = () => (async (dispatch, getState) => {
 		const breeds = (await response.json()).message;
 		
 		const keys = Object.keys(breeds);
-		const breedsWithVariants = keys.filter( k => !(breeds[k].length < 1));
+		const breedsWithVariants = keys.filter( k => !(breeds[k].length < 2));
 
 		dispatch(loadBreedsSuccess(breedsWithVariants));
 
