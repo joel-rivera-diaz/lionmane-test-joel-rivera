@@ -26,14 +26,21 @@ const BreedPage: FC<Props> = (props) => {
 		startLoadingVariants(breed);
 	}, [breed]);
 
-	const variantsView = variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />);
-	const loadingView = <h1 className='alert'>LOADING VARIANTS...</h1>;
-
 	return (
 		<div className='BreedPage'>
 			<Header />
 			<div className='content'>
-				{isLoading ? loadingView : variantsView}
+				{
+				isLoading ? 
+					<h1 className='alert'>LOADING VARIANTS...</h1>
+				:
+					variants.map( (v) => 
+						<Variant 
+							name={v.name}
+							imageURL={v.imageURLs[0]}
+						/>
+					)
+				}
 			</div>
 		</div>
 		
@@ -50,6 +57,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ConnectedBreedPage = connect(mapStateToProps, mapDispatchToProps)(BreedPage) 
-
 
 export  { ConnectedBreedPage as BreedPage };
