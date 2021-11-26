@@ -20,13 +20,19 @@ export const getVariantImages = (variant): Action => ({
 	payload: { variant }
 });
 
+// -----------
+
 export const SELECT_FAVORITE_VARIANT = 'SELECT_FAVORITE_VARIANT';
 export const selectFavoriteVariant = (name): Action => ({
 	type: SELECT_FAVORITE_VARIANT,
 	payload: { name }
 });
 
-// ---- S. W.
+export const OPEN_POPUP = 'OPEN_POPUP';
+export const openPopup = (name): Action => ({
+	type: OPEN_POPUP,
+	payload: { name }
+});
 
 export const LOAD_VARIANTS_IN_PROGRESS = 'LOAD_VARIANTS_IN_PROGRESS';
 export const loadVariantsInProgress = (): Action => ({

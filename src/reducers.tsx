@@ -6,7 +6,8 @@ import {
 	SELECT_FAVORITE_VARIANT,
 	LOAD_VARIANTS_IN_PROGRESS,
 	LOAD_VARIANTS_SUCCESS,
-	LOAD_VARIANTS_FAILURE
+	LOAD_VARIANTS_FAILURE,
+	OPEN_POPUP
 } from './actions';
 
 export const isLoading = (state = false, action) => {
@@ -56,6 +57,32 @@ export const favoriteVariant = (state = null, action) => {
 	switch (type) {
 		case SELECT_FAVORITE_VARIANT: {
 			return payload.name;	
+		}
+		default: {
+			return state;
+		}
+	}
+};
+
+export const isVariantPopupOpen = (state = false, action) => {
+	const { type } = action;
+	
+	switch (type) {
+		case OPEN_POPUP: {
+			return true;
+		}
+		default: {
+			return state;
+		}
+	}
+};
+
+export const popupVariantSelected = (state = '', action) => {
+	const { type, payload } = action;
+
+	switch(type) {
+		case OPEN_POPUP: {
+			return payload.name
 		}
 		default: {
 			return state;
