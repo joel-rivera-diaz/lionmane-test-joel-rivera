@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
 import { Header } from '../components/Header';
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const HomePage: FC<Props>  = ({ startLoadingBreeds, breeds }) => {
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		startLoadingBreeds();
@@ -19,10 +21,14 @@ const HomePage: FC<Props>  = ({ startLoadingBreeds, breeds }) => {
 		<div className='HomePage'>
 			<Header />
 			<div className='favorite'>
-
+				
 			</div>
 			<div className='breed-list'>
-				
+				{breeds.map( breed =>(
+					<div className='breed' onClick={() => navigate(`/breed/${breed}`)}>
+						{breed}
+					</div>
+				))}
 			</div>
 		</div>
 		

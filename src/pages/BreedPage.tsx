@@ -32,6 +32,7 @@ const BreedPage: FC<Props> = (props) => {
 			<Popup />
 			<div className='BreedPage'>
 				<Header />
+				<h3 className='title'>Breed: <strong>{breed}</strong> - variants</h3>
 				<div className='content'>
 					{
 					isLoading ? 
