@@ -1,4 +1,5 @@
 import { FC, useMemo } from "react";
+import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from "../store";
 import { connect } from "react-redux";
 import { selectFavoriteVariant, closePopup } from "../actions";
@@ -14,9 +15,9 @@ interface Props {
 }
 
 const Popup: FC<Props> = ({ variants, popupVariant, onClosePopup, isVariantPopupOpen, onSelectFavoritePressed }) => {
+	const navigate = useNavigate();
 	const imgURLs = useMemo(() => { 
 		let urls: string[] = [];
-
 		for (const v of variants) {
 			if(v.name === popupVariant){
 				urls = v.imageURLs;
@@ -33,6 +34,11 @@ const Popup: FC<Props> = ({ variants, popupVariant, onClosePopup, isVariantPopup
 		display = {display: 'none'}
 	}
 
+	const onSelectingFavoriteClick = () => {
+		onSelectFavoritePressed(popupVariant);
+		navigate(`/`);
+	};
+
 	return (
 		<div className='Popup' style={display}>
 			<div className='box'>
@@ -46,7 +52,7 @@ const Popup: FC<Props> = ({ variants, popupVariant, onClosePopup, isVariantPopup
 					))}
 				</div>
 				<div className='button'>
-					<button onClick={() => onSelectFavoritePressed(popupVariant)}>
+					<button onClick={() => onSelectingFavoriteClick()}>
 						Select as Favorite
 					</button>
 				</div>

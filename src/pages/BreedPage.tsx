@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { Variant } from '../components/Variant';
 import { Header } from '../components/Header';
 import { Popup } from '../components/Popup';
-import { RootState, AppDispatch } from '../store';
+import { AppDispatch } from '../store';
 import { loadVariants, VariantData } from '../thunks';
 import {  } from '../actions';
 
@@ -54,6 +54,6 @@ const mapDispatchToProps = dispatch => ({
 	startLoadingVariants: breed => dispatch(loadVariants(breed))
 });
 
-const ConnectedBreedPage = connect(mapStateToProps, mapDispatchToProps)(BreedPage) 
+const ConnectedBreedPage = connect(mapStateToProps, mapDispatchToProps)(BreedPage);
 
 export  { ConnectedBreedPage as BreedPage };

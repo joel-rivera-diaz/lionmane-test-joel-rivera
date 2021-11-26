@@ -1,13 +1,34 @@
 import { 
 	loadVariantsInProgress,
 	loadVariantsSuccess,
-	loadVariantsFailure 
+	loadVariantsFailure,
+	loadBreedsInProgress,
+	loadBreedsSuccess,
+	loadBreedsFailure
 } from './actions';
 
 export interface VariantData {
 	name: string,
 	imageURLs: string[]
 }
+
+
+export const loadBreeds = () => (async (dispatch, getState) => {
+	try {
+		dispatch(loadBreedsInProgress());
+		// GET breeds
+		const response = await fetch(`https://dog.ceo/api/breeds/list/all`);
+		const breeds = (await response.json()).message;
+		
+		dispatch(loadBreedsSuccess(breeds));
+
+	} catch (e) {
+		dispatch(loadBreedsFailure());
+		dispatch(displayAlert(e))
+	}
+
+});
+
 
 export const loadVariants = (breed) => (async (dispatch, getState) => {
 	try {
