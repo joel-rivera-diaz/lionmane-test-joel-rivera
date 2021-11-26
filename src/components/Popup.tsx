@@ -22,7 +22,7 @@ const Popup: FC<Props> = ({ variants, popupVariant, onClosePopup, isVariantPopup
 				urls = v.imageURLs;
 			}
 		}
-		return urls;
+		return urls.slice(0, 3);
 	}, [popupVariant]);
 	
 
