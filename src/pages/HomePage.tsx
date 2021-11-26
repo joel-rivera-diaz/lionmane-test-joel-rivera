@@ -33,10 +33,11 @@ const HomePage: FC<Props>  = ({ startLoadingBreeds, breeds, favoriteVariant, var
 		<div className='HomePage'>
 			<Header />
 			<div className='favorite'>
-				<h2>Favorite: {favoriteVariant}</h2>
+				{favoriteVariant ? <h2>Favorite: {favoriteVariant}</h2> : 'Please Choose a Favorite'}
 				<img src={imgURLs[0]}></img>
 			</div>
 			<div className='breed-list'>
+				<hr />
 				<h1>Breeds: </h1>
 				{breeds.map( breed =>(
 					<div className='breed' onClick={() => navigate(`/breed/${breed}`)}>

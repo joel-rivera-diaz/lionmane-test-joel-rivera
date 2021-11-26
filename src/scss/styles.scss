@@ -28,12 +28,15 @@ $transparent: #000000a6;
 .HomePage {
 	.favorite{
 		padding: 20px;
+		h2{
+			padding: 10px 0;
+		}
 		img{
 			width: 200px;
 		}
 	}
 	.breed-list {
-
+		padding: 20px;
 		.breed {
 			&:hover {
 				background-color: $lightest-gray;
