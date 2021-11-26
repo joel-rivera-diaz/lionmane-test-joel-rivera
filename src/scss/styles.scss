@@ -138,6 +138,12 @@ $transparent: #000000a6;
 		}
 		.gallery {
 			height: 200px;
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			img {
+				width: 150px;
+			}
 		}
 		.button {
 			position: relative;
