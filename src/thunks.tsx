@@ -20,7 +20,10 @@ export const loadBreeds = () => (async (dispatch, getState) => {
 		const response = await fetch(`https://dog.ceo/api/breeds/list/all`);
 		const breeds = (await response.json()).message;
 		
-		dispatch(loadBreedsSuccess(breeds));
+		const keys = Object.keys(breeds);
+		const breedsWithVariants = keys.filter( k => !(breeds[k].length < 1));
+
+		dispatch(loadBreedsSuccess(breedsWithVariants));
 
 	} catch (e) {
 		dispatch(loadBreedsFailure());
