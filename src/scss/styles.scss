@@ -4,6 +4,7 @@ $lightest-gray: #ececec;
 $almost-white: rgb(245, 245, 245);
 $dark-gray: rgb(119, 119, 119);
 $darkest-gray: rgb(70, 70, 70);
+$transparent: #000000a6;
 
 // ---------------------
 //       General
@@ -28,6 +29,8 @@ $darkest-gray: rgb(70, 70, 70);
 // ---------------------
 //      Components
 // ---------------------
+
+// ------ Header -------
 .Header {
 	background-color: $light-gray;
 	display: flex;
@@ -71,7 +74,7 @@ $darkest-gray: rgb(70, 70, 70);
 		}
 	}
 }
-
+// ------ Variant -------
 .Variant {
 	display: flex;
 	flex-direction: row;
@@ -101,3 +104,41 @@ $darkest-gray: rgb(70, 70, 70);
 	}
 }
 
+// ------ Popup -------
+.Popup {
+	background-color: $transparent;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+
+	.box {
+		position: fixed;
+		width: 600px;
+		height: 400px;
+		left: 50%;
+		top: 50%;
+		margin-left: -300px;
+		margin-top: -200px;
+		background-color: $dark-gray;
+		.title {
+			padding: 20px;
+		}
+		.gallery {
+			height: 200px;
+		}
+		.button {
+			position: relative;
+			height: 138px;
+			button {
+				display: block;
+				width: 100px;
+				height: 60px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -50px;
+				margin-top: -30px;
+			}
+		}
+	}
+}

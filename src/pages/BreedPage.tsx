@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 import { Variant } from '../components/Variant';
 import { Header } from '../components/Header';
+import { Popup } from '../components/Popup';
 import { RootState, AppDispatch } from '../store';
 import { loadVariants, VariantData } from '../thunks';
-import { getVariants } from '../actions';
+import {  } from '../actions';
 
 interface Props {
 	variants: VariantData[],
@@ -27,18 +28,20 @@ const BreedPage: FC<Props> = (props) => {
 	}, [breed]);
 
 	return (
-		<div className='BreedPage'>
-			<Header />
-			<div className='content'>
-				{
-				isLoading ? 
-					<h1 className='alert'>LOADING VARIANTS...</h1>
-				:
-					variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />)
-				}
+		<>
+			<Popup />
+			<div className='BreedPage'>
+				<Header />
+				<div className='content'>
+					{
+					isLoading ? 
+						<h1 className='alert'>LOADING VARIANTS...</h1>
+					:
+						variants.map( (v) => <Variant name={v.name} imageURL={v.imageURLs[0]} />)
+					}
+				</div>
 			</div>
-		</div>
-		
+		</>
 	);
 };
 
